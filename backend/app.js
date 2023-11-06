@@ -25,6 +25,7 @@ Order.belongsTo(User)
 app.use('/expense' , expenseRoutes)
 app.use('/user' , userRoutes)
 app.use('/payment' , paymentsRoutes)
+//checking
 
 
 sequelize
