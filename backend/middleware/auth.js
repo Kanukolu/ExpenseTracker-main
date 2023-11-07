@@ -10,7 +10,7 @@ const authenticate = async(req ,res ,next)=>{
         console.log(token)
         const data = jwt.verify(token ,"key")
 
-        console.log('response'+data)
+        //console.log('response'+data)
         const user = await User.findByPk(data.id)
 
         // return res.json({success : true})

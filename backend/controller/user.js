@@ -11,7 +11,7 @@ exports.createUser = async (req,res)=>{
     const email = req.body.email;
     const password = req.body.password;
     let result = await User.findOne({where : {email : email}})
-    console.log(result)
+   // console.log(result)
     if(result !== null)
         return res.status(401).json({success : false , msg : "User already exists"})
     let hash = await bcrypt.hash(password , 10);
@@ -43,7 +43,7 @@ exports.login = async (req ,res)=>{
         const result = await bcrypt.compare(password ,user.password)
         if(result){
             const token = jwt.sign({id : user.id, isPremiumUser : user.isPremiumUser} ,'key')
-            console.log(token)
+           // console.log(token)
             return res.json({success : true , token ,isPremiumUser : user.isPremiumUser })
         }else{
             return res.status(401).json({success : false , msg : "wrong credentials"})
