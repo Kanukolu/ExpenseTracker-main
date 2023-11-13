@@ -11,7 +11,7 @@ async function handleSubmit(e){
         })
         console.log(response)
         if(response.status == 200)
-            alert("user not found")
+            alert("email sent ")
     }catch(e){
         console.log(e)
         if(e.response.status == 404)
