@@ -22,7 +22,7 @@ router.post('/forgot-password' , async(req,res)=>{
         console.log(user)
         console.log(user== null)
         if(user === null)
-             return res.status(401).json({success : false , msg :"Email not found"})
+             return res.status(404).json({success : false , msg :"Email not found"})
 
         var defaultClient = Brevo.ApiClient.instance;
         var apiKey = defaultClient.authentications['api-key'];
@@ -46,6 +46,47 @@ router.post('/forgot-password' , async(req,res)=>{
             `<a href="http://127.0.0.1:5500/reset-password.html?reset=${link.id}">click here</a>`,
         })
         return res.json({success : true ,link})
+
+
+    }catch(e){
+        console.log(e)
+        return res.status(500).json({success : false ,msg :"Internal server error"})
+    }
+})
+
+router.post('/test' , async(req,res)=>{
+    try{
+        // const {email} = req.body;
+        // console.log(email);
+        // const user = await User.findAll({where : {email : email}},{
+        //     include : [
+        //         {model : FP}
+        //     ]
+        // })
+        // console.log(user)
+        // console.log(user== null)
+        // if(user === null)
+        //      return res.status(404).json({success : false , msg :"Email not found"})
+
+        var defaultClient = Brevo.ApiClient.instance;
+        var apiKey = defaultClient.authentications['api-key'];
+        apiKey.apiKey = process.env.BREVO_API_KEY
+
+        var apiInstance = new Brevo.TransactionalEmailsApi();
+
+        const sender = { "email": "kanukolulakshmi@gmail.com"}
+
+        const reciever = [{
+            "email":"srinivasaraohmi2002@gmail.com"
+        }]
+        // const link = await user.createFP();
+        const response = await apiInstance.sendTransacEmail({
+            sender,
+            to : reciever,
+            subject : 'testing',
+            textContent: 'hello , this is a text content',
+        })
+        return res.json({success : true , response})
 
 
     }catch(e){
