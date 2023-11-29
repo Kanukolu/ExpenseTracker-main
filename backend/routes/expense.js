@@ -16,8 +16,10 @@ router.delete('/deleteExpense/:id' , authenticate, expense.deleteExpense) // del
 
 router.post('/edit-expense/:id' , authenticate,expense.editExpense)
 
-router.get('/get-expense' , authenticate ,expense.getExpenses )
+router.post('/get-expense' , authenticate ,expense.getExpenses )
 
+router.get('/download' , authenticate , expense.downloadExpenses)
+router.get('/get-all-urls' , authenticate , expense.downloadUrls)
 
 
 
