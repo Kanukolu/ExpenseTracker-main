@@ -41,7 +41,7 @@ async function handleSubmit(e){
         console.log(res)
         if(res.data.success){
             alert('password changed successfully now you can login again')
-            window.location.href = 'login.html'
+            window.location.href = '/login'
         }
     }
 }catch(e){

@@ -21,7 +21,7 @@ async function loginUser(e){
             alert("login succesfully")
             localStorage.setItem('token' , result.data.token)
             localStorage.setItem('isPremiumUser' , result.data.isPremiumUser)
-            window.location ="/"
+            window.location ="/home"
         }
     }catch(e){
         console.log(e)

@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
-    <title>Login</title>
+    <title>Sign up</title>
+    <link rel="stylesheet" href="css/signup.css">
 </head>
 <body>
-    <div class="login-display">
-    <h2>Login</h2>
+    <div class="signup">
+    <h2>Sign up</h2>
+    <form id="signup">
+        <div class="name">
 
-    <form id="login">
+            <label for="name">Name</label>
+            <input for="name" id="name" type="text" required>
+        </div>
         <div class="email">
 
             <label for="email">Email</label>
@@ -21,13 +25,12 @@
             <label for="password">Password</label>
             <input for="password" id="password" type="password" required>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Signup</button>
     </form>
-    <a href="forgot-password.html"><button id="forgot-password">Forgot password</button></a>
-    <button><a href="/signup.html" >New user - signup</a></button>
+    <button><a href="/login" >Existing user - login</a></button>
 </div>
 </body>
 <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
-<script src="js/login.js"></script>
+<script src="js/signup.js"></script>
 </html>
