@@ -6,7 +6,7 @@ async function handleSubmit(e){
     e.preventDefault()
     console.log(e.target.email.value)
     try{
-        const response = await axios.post('http://localhost:4000/password/forgot-password',{
+        const response = await axios.post('http://51.20.141.54:4000/password/forgot-password',{
             email : e.target.email.value
         })
         console.log(response)

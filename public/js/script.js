@@ -10,7 +10,7 @@ ul.addEventListener('click', handleClick)
 
 
 const axiosInstance = axios.create({
-    baseURL: "http://localhost:4000/expense",
+    baseURL: "http://51.20.141.54:4000/expense",
     headers : {
         'auth-token' : localStorage.getItem('token')
     }
