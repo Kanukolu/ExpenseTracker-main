@@ -65,11 +65,11 @@ async function saveDetails(e) {
 
 async function renderElements() {
     if (localStorage.getItem('token') == undefined)
-        window.location = "/login.html"
+        window.location = "/login"
 
         console.log(localStorage.getItem("isPremiumUser"))
 
-    let res = await axios.get('http://localhost:4000/premium/checkPremium',{
+    let res = await axios.get('http://51.20.141.54:4000/premium/checkPremium',{
         headers : {
             "auth-token" : localStorage.getItem('token')
         }
@@ -175,7 +175,7 @@ async function purchaseMembeship(e) {
 
     try {
 
-        const response = await axios.post('http://localhost:4000/payment/purchasemembership', null, {
+        const response = await axios.post('http://51.20.141.54:4000/payment/purchasemembership', null, {
             headers: {
                 "auth-token": localStorage.getItem('token')
             }
@@ -196,7 +196,7 @@ async function purchaseMembeship(e) {
 
             "order_id": response.data.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "handler": async function (response) {
-                const res = await axios.post("http://localhost:4000/payment/success", {
+                const res = await axios.post("http://51.20.141.54:4000/payment/success", {
 
                     "payment_id": response.razorpay_payment_id,
                     "razorpay_signature": response.razorpay_signature
@@ -231,7 +231,7 @@ async function purchaseMembeship(e) {
         rzp1.on('payment.failed', async function (response) {
             alert('failded')
             console.log(response.error)
-            const res = await axios.post("http://localhost:4000/payment/failed", {
+            const res = await axios.post("http://51.20.141.54:4000/payment/failed", {
 
                 "payment_id": response.error.metadata.payment_id
 
@@ -254,7 +254,7 @@ async function purchaseMembeship(e) {
 
 document.getElementById("showleaderboard").addEventListener('click', async()=>{
     try{
-        const res = await axios.get('http://localhost:4000/premium/showleaderboard',{
+        const res = await axios.get('http://51.20.141.54:4000/premium/showleaderboard',{
             headers :{
                 "auth-token": localStorage.getItem('token')
             }
